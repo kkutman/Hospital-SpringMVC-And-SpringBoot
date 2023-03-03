@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <form th:method="POST" th:action="createAppointment" th:object="${appointment}" class="form_hospital">
+            <div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="date" th:field="*{date}" id="name">
+                </div>
+                <div class="form-group" >
+                    <select th:field="*{departmentId}">
+                        <option value="">--Select an department--</option>
+                        <option th:each="department : ${getAllDepartment}" th:value="${department.getId()}" th:text="${department.getName()}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select th:field="*{doctorId}">
+                        <option value="">--Select an doctor--</option>
+                        <option th:each="doctor : ${getAllDoctor}" th:value="${doctor.getId()}" th:text="${doctor.getFirstName()}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select th:field="*{patientId}">
+                        <option value="">--Select an patient--</option>
+                        <option th:each="patient:${getAllPatient}" th:value="${patient.getId()}" th:text="${patient.getFirstName()}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn_save">SAVE</button>
+            </div>
+
+        </form>
+
+    </div>
+    <p style="text-align:center;">
+        <a class="btn btn-outline'-primary" role="button" href="/appointment/saveAppointment">saveAppointment</a></p>
+
+</div>
+
+<p style="text-align:center;">
+    <a class="btn btn-outline'-primary" role="button" href="/mainPage">mainPage</a></p>
+
+
+
+</body>
+</html>

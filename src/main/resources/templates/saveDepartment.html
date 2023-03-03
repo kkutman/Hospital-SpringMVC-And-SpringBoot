@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+    <form th:method="POST" th:action="creatDepartment" th:object="${newDepartment}" class="form_hospital">
+        <div>
+            <label for="name" class="labels"> name </label>
+            <br/>
+            <input type="text" th:field="*{name}"id="name" class="inputs">
+            <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</div>
+            <div class="form-group">
+                <select th:field="*{hospitalId}">
+                    <option value="">--  Hospital  --</option>
+                    <option th:each="hospital : ${getAllHospital}" th:value="${hospital.getId()}" th:text="${hospital.getName()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn_save">SAVE</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+</body>
+</html>

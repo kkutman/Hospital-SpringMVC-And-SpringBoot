@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form th:method="POST" th:action="@{/patient/{id}/update(id=${newUpdatePatient.getId()})}" th:object="${newUpdatePatient}" class="form_hospital">
+        <div>
+            <label for="name" class="labels"> first name </label>
+            <br/>
+            <input type="text" th:field="*{firstName}"id="name" class="inputs">
+            <br/>
+            <label for="lastname" class="labels">last name </label>
+            <br/>
+            <input type="text" th:field="*{lastName}"id="lastname" class="inputs">
+            <br/>
+            <label for="email" class="labels"> email </label>
+            <br/>
+            <input type="text" th:field="*{email}"id="email" class="inputs">
+            <br/>
+            <label for="gender" class="labels"> gender </label>
+            <br/>
+            <input type="text" th:field="*{gender}"id="gender" class="inputs">
+            <br/>
+            <label for="phoneNumber" class="labels"> phoneNumber </label>
+            <br/>
+            <input type="text" th:field="*{phoneNumber}"id="phoneNumber" class="inputs">
+            <button type="submit" class="btn_save">SAVE PATIENT</button>
+        </div>
+    </form>
+</div>
+</div>
+<p style="text-align:center;">
+    <a class="btn btn-outline'-primary" role="button" href="/mainPage">mainPage</a></p>
+</body>
+</body>
+</html>

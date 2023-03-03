@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th scope="col">id </th>
+            <th scope="col">name </th>
+            <th scope="col">hospital</th>
+            <th scope="col">delete</th>
+<!--            <th scope="col">update</th>-->
+
+        </tr>
+        <tr th:each="department:${getAll}">
+            <td th:text="${department.getId()}">Id</td>
+            <td th:text="${department.getName()}">Name</td>
+            <td th:text="${department.getHospital().getName()}">Hospital</td>
+            <td><a th:href="@{/department/{id}/delete(id=${department.getId()})}">Delete</a></td>
+            <td><a th:href="@{/department/{id}/edit(id=${department.getId()})}">Update</a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <a href="/department/saveDepartment">
+        <button type="button">Create Department</button>
+    </a>
+</div>
+</body>
+</html>

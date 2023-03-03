@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>HospitalName</th>
+            <th>Address</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <th>Department</th>
+            <th>Doctor</th>
+            <th>Patient</th>
+        </tr>
+        <tr th:each="hospital:${getAll}">
+            <td th:text="${hospital.getId()}">Id</td>
+            <td th:text="${hospital.getName()}">Name</td>
+            <td th:text="${hospital.getAddress()}">Address</td>
+            <td><a th:href="@{hospital/{id}/edit(id=${hospital.getId()})}">Update</a></td>
+            <td><a th:href="@{hospital/{id}/delete(id=${hospital.getId()})}">Delete</a></td>
+            <td><a th:href="@{department/{id}/getAll(id=${hospital.getId()})}">Department</a></td>
+            <td><a th:href="@{doctor/{id}/getAll(id=${hospital.getId()})}">Doctor</a></td>
+            <td><a th:href="@{patient/{id}/getAll(id=${hospital.getId()})}">Patient</a></td>
+            <td><a th:href="@{appointment/{id}/getAll(id=${hospital.getId()})}">Appointment</a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <a href="/hospital/saveHospital">
+        <button type="button">Create Hospital</button>
+    </a>
+</div>
+</body>
+</html>

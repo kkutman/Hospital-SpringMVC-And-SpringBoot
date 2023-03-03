@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div>
+    <form th:method="POST" th:action="@{/doctor/{id}/update(id=${newUpdateDoctor.getId()})}" th:object="${newUpdateDoctor}" class="form_hospital">
+      <div>
+        <label for="firstName" class="labels"> firstName </label>
+        <br/>
+        <input type="text" th:field="*{firstName}"id="firstName" class="inputs">
+        <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">name error</div>
+        <br/>
+        <label for="lastName" class="labels">Lastname</label>
+        <br/>
+        <input type="text" th:field="*{lastName}"id="lastName" class="inputs">
+        <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">name error</div>
+        <br/>
+        <label for="email" class="labels"> email </label>
+        <br/>
+        <input type="text" th:field="*{email}"id="email" class="inputs">
+        <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">name error</div>
+        <br/>
+        <label for="name" class="labels"> position </label>
+        <br/>
+        <input type="text" th:field="*{position}"id="name" class="inputs">
+        <div style="color: red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">name error</div>
+
+
+        <button type="submit" class="btn_save">SAVE</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

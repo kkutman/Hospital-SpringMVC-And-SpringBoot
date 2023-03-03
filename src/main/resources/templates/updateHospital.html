@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form th:method="POST" th:action="update" th:object="${newUpdateHospital}" class="form_hospital">
+        <div>
+
+            <label for="name" class="labels"> name </label>
+            <br/>
+            <input type="text" th:field="*{name}"id="name" class="inputs">
+            <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</div>
+            <br/>
+            <label for="address"  class="labels"> address </label>
+            <br/>
+            <input type="text" th:field="*{address}"id="address"  class="inputs">
+            <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address error</div>
+            <button type="submit" class="btn_save">Update</button>
+        </div>
+
+    </form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id </th>
+    <th scope="col">firstName </th>
+    <th scope="col">LastName</th>
+    <th scope="col">Email</th>
+    <th scope="col">Gender</th>
+    <th scope="col">PhoneNumber</th>
+    <th scope="col">Hospital</th>
+    <th scope="col">delete</th>
+    <th scope="col">update</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="patient:${getAll}">
+    <td th:text="${patient.getId()}"></td>
+    <td th:text="${patient.getFirstName()}"></td>
+    <td th:text="${patient.getLastName()}"></td>
+    <td th:text="${patient.getEmail()}"></td>
+    <td th:text="${patient.getGender()}"></td>
+    <td th:text="${patient.getPhoneNumber()}"></td>
+    <td th:text="${patient.getHospital().getName()}"></td>
+    <td><form th:method="DELETE" th:action="@{/patient/{id}/delete(id=${patient.getId()})}">
+      <input type="submit" class="btn btn-outline-primary"  th:value="  Delete  "></input>
+    </form>
+    </td>
+    <td><form th:method="GET" th:action="@{/patient/{id}/editPatient(id=${patient.getId()})}">
+      <button type="submit" class="btn btn-outline-primary"> edit</button>
+    </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<form th:method="get" th:action="@{/patient/{id}/savePatient(id=${number})}">
+  <button type="submit" class="btn btn-outline-primary">savePatient</button>
+</form>
+<p style="text-align:center;">
+  <a class="btn btn-outline'-primary" role="button" href="/mainPage">mainPage</a></p>
+
+</body>
+</html>

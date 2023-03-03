@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id </th>
+    <th scope="col">firstName </th>
+    <th scope="col">LastName</th>
+    <th scope="col">Position</th>
+    <th scope="col">Email</th>
+    <th scope="col">Hospital</th>
+    <th scope="col">assign</th>
+    <th scope="col">delete</th>
+    <th scope="col">update</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="department:${getAll}">
+    <td th:text="${department.getId()}"></td>
+    <td th:text="${department.getFirstName()}"></td>
+    <td th:text="${department.getLastName()}"></td>
+    <td th:text="${department.getPosition()}"></td>
+    <td th:text="${department.getEmail()}"></td>
+    <td th:text="${department.getHospital().getName()}"></td>
+    <td><form th:method="GET" th:action="@{/doctor/{id}/assign(id=${department.getId()})}">
+      <input type="submit" class="btn btn-outline-primary"  th:value="  Assign  "></input>
+    </form>
+    </td>
+
+    <td><form th:method="DELETE" th:action="@{/doctor/{id}/delete(id=${department.getId()})}">
+      <input type="submit" class="btn btn-outline-primary"  th:value="  Delete  "></input>
+    </form>
+    </td>
+    <td><form th:method="GET" th:action="@{/doctor/{id}/editDoctor(id=${department.getId()})}">
+      <button type="submit" class="btn btn-outline-primary">edit</button>
+    </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<form th:method="get" th:action="@{/doctor/{id}/saveDoctor(id=${number})}">
+  <button type="submit" class="btn btn-outline-primary">saveDoctor</button>
+</form>
+</body>
+</html>
